@@ -34,40 +34,20 @@ def substract(arg1conv,arg2conv):
     if isinstance(arg2conv,str) and isinstance(arg1conv,str):
         arg1conv_cut = list(arg1conv)
         arg2conv_cut = list(arg2conv)
-        if arg2conv in arg1conv:
-#____________________________________________________________________
-            for lettre in arg1conv_cut:
-                if lettre in arg2conv_cut:
-                    all_index = []
-                    for i in range(0, len(arg1conv_cut)) : 
-                        if arg1conv_cut[i] == lettre : 
-                            all_index.append(i)
-                    maximum = max(all_index)
-                    arg1conv_cut.pop(maximum)
-                    arg1conv_cut.insert(maximum,"")
-                    arg2conv_cut.remove(lettre)
-            for lettre_restante in arg1conv_cut:
-                result += str(lettre_restante)
-#____________________________________________________________________
-        else:
-#____________________________________________________________________
-            for lettre in arg1conv_cut:
-                if lettre in arg2conv_cut:
-                    all_index = []
-                    for i in range(0, len(arg1conv_cut)) : 
-                        if arg1conv_cut[i] == lettre : 
-                            all_index.append(i)
-                    maximum = max(all_index)
-                    arg1conv_cut.pop(maximum)
-                    arg1conv_cut.insert(maximum,"")
-                    arg2conv_cut.remove(lettre)
-            for lettre_restante in arg1conv_cut:
-                result += str(lettre_restante)
-#____________________________________________________________________
-            return result
-        return arg1conv
-        
-    elif isinstance(arg2conv,str) == True:
+        for lettre in arg1conv_cut:
+            if lettre in arg2conv_cut:
+                all_index = []
+                for i in range(0, len(arg1conv_cut)) : 
+                    if arg1conv_cut[i] == lettre : 
+                        all_index.append(i)
+                maximum = max(all_index)
+                arg1conv_cut.pop(maximum)
+                arg1conv_cut.insert(maximum,"")
+                arg2conv_cut.remove(lettre)
+        for lettre_restante in arg1conv_cut:
+            result += str(lettre_restante)
+        return result
+    if isinstance(arg2conv,str) == True:
         try:
             arg2conv = float(arg2conv)
         except ValueError:
