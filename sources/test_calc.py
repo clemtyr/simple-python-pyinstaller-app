@@ -62,6 +62,10 @@ class Testsubstract(unittest.TestCase):
         result = calc.substract(4.1,1.1)
         self.assertEqual(result,3.0)
 
+    def test_substract_string_contain_letter_in_an_other_string_should_remove_the_party_of_the_string_string_substractor(self):
+        result = calc.substract("tesrtrdc","sertfggege")
+        self.assertEqual(result,"trdc")
+
         
 
 
