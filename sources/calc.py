@@ -21,8 +21,44 @@ def add2(arg1, arg2):
     # Convert 'arg1' and 'arg2' to their appropriate types
     arg1conv = conv(arg1)
     arg2conv = conv(arg2)
-    # If either 'arg1' or 'arg2' is a string, ensure they're both strings.
+        # If either 'arg1' or 'arg2' is a string, ensure they're both strings.
     if isinstance(arg1conv, str) or isinstance(arg2conv, str):
         arg1conv = str(arg1conv)
         arg2conv = str(arg2conv)
     return arg1conv + arg2conv
+
+
+
+def substract(arg1conv,arg2conv):
+    result = ""
+    if isinstance(arg2conv,str) and isinstance(arg1conv,str):
+        if arg2conv in arg1conv:
+            arg1conv_cut = list(arg1conv)
+            arg2conv_cut = list(arg2conv)
+            for lettre in arg1conv_cut:
+                if lettre in arg2conv_cut:
+                    all_index = []
+                    for i in range(0, len(arg1conv_cut)) : 
+                        if arg1conv_cut[i] == lettre : 
+                            all_index.append(i)
+                    maximum = max(all_index)
+                    arg1conv_cut.pop(maximum)
+                    arg1conv_cut.insert(maximum,"")
+                    arg2conv_cut.remove(lettre)
+            for lettre_restante in arg1conv_cut:
+                result += str(lettre_restante)
+        else:
+            return arg1conv
+        return result
+    elif isinstance(arg2conv,str) == True:
+        try:
+            arg2conv = float(arg2conv)
+        except ValueError:
+            return arg1conv
+    elif isinstance(arg1conv,str) == True:
+        try:
+            arg2conv = float(arg1conv)
+        except ValueError:
+            return arg1conv
+    else:
+        return round(arg1conv - arg2conv,15)

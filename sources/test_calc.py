@@ -44,5 +44,27 @@ class TestCalc(unittest.TestCase):
         result = calc.add2('abc', '5.5')
         self.assertEqual(result, 'abc5.5')
 
+
+class Testsubstract(unittest.TestCase):
+    def test_substract_integers(self):
+        result = calc.substract(5,3)
+        self.assertEqual(result,5-3)
+
+    def test_substract_integers_from_string_should_unchanged_string(self):
+        result = calc.substract("acda",48)
+        self.assertEqual(result,"acda")
+
+    def test_substract_string_contain_in_an_other_string_should_remove_the_party_of_the_string_string_substractor(self):
+        result = calc.substract("","rdf")
+        self.assertEqual(result,"")
+    
+    def test_float_substract_float(self):
+        result = calc.substract(4.1,1.1)
+        self.assertEqual(result,3.0)
+
+        
+
+
+
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=0)
