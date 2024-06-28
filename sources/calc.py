@@ -40,9 +40,9 @@ def substract(arg1conv,arg2conv):
                 for i in range(0, len(arg1conv_cut)) : 
                     if arg1conv_cut[i] == lettre : 
                         all_index.append(i)
-                maximum = max(all_index)
-                arg1conv_cut.pop(maximum)
-                arg1conv_cut.insert(maximum,"")
+                minimum = min(all_index)
+                arg1conv_cut.pop(minimum)
+                arg1conv_cut.insert(minimum,"")
                 arg2conv_cut.remove(lettre)
         for lettre_restante in arg1conv_cut:
             result += str(lettre_restante)
